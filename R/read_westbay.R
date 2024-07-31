@@ -108,13 +108,13 @@ read_westbay.character <- function(x,
   wh   <- grep("[Data]", ind, fixed = TRUE)
 
   dat <- data.table::fread(x, skip = wh + 1,
-               na.strings = c("", "NA", "N A", "N / A", "N/A", "N/ A",
-                              "Not Available", "NOt available",
-                              '"n/a"', 'n/a'), )
+                           na.strings = c("", "NA", "N A", "N / A", "N/A", "N/ A",
+                                          "Not Available", "NOt available",
+                                          '"n/a"', 'n/a'))
   data.table::setDT(dat)
   data.table::setnames(dat, c("name", "datetime", "pressure", "temperature",
-                  "probe_id", "probe_status", "probe_description",
-                  "port", "port_description", "depth", "comments"))
+                              "probe_id", "probe_status", "probe_description",
+                              "port", "port_description", "depth", "comments"))
 
 
   dat[, pressure := as.numeric(pressure)]
