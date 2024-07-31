@@ -69,7 +69,7 @@ read_westbay.character <- function(x,
   # }
 
   dat[, units := .get_westbay_elevation(h)[["units"]]]
-  dat[, calibration := list(data.table(coef = character(), value = numeric()))]
+  # dat[, calibration := list(data.table(coef = character(), value = numeric()))]
 
   # setcolorder(dat, c("file", "channel", "data", "id", "calibration",
   #                    "parameter", "units", "version", "serial", "model", "dt",
