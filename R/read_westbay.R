@@ -2,12 +2,11 @@
 #' read_westbay
 #'
 #' @param x name of the file
-#' @param ...
+#' @param ... other arguments
 #'
-#' @return
+#' @return data.table
 #' @export
 #'
-#' @examples
 #===============================================================================
 read_westbay <- function(x,
                          transducer_depth = NULL,
@@ -20,15 +19,14 @@ read_westbay <- function(x,
 #' read_westbay.character
 #'
 #' @param x name of the file
-#' @param tranducer_depth
-#' @param well_elevation
-#' @param ...
+#' @param tranducer_depth depth
+#' @param well_elevation elevation reference
+#' @param ...other arguments
 #'
-#' @return
+#' @return data.table
 #' @export
 #'
-#' @examples
-#' #===============================================================================
+#===============================================================================
 read_westbay.character <- function(x,
                                    transducer_depth = NULL,
                                    well_elevation   = NULL,
@@ -177,15 +175,7 @@ read_westbay.character <- function(x,
 
 }
 
-#===============================================================================
-#' .parse_westbay_header
-#'
-#' @param x
-#'
-#' @return
-#' @export
-#'
-#' @examples
+
 #===============================================================================
 .parse_westbay_header <- function(x) {
 

@@ -9,11 +9,15 @@
 \arguments{
 \item{x}{name of the file}
 
-\item{...}{}
+\item{well_elevation}{elevation reference}
+
+\item{tranducer_depth}{depth}
+
+\item{...other}{arguments}
+}
+\value{
+data.table
 }
 \description{
 read_westbay.character
-}
-\examples{
-#===============================================================================
 }

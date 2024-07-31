@@ -9,7 +9,10 @@ read_westbay(x, transducer_depth = NULL, well_elevation = NULL, ...)
 \arguments{
 \item{x}{name of the file}
 
-\item{...}{}
+\item{...}{other arguments}
+}
+\value{
+data.table
 }
 \description{
 read_westbay
