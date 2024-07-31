@@ -8,5 +8,5 @@ Description: Reads .csv files converted from Westbay loggers
 License: MIT
 Encoding: UTF-8
 LazyData: true
-Imports: Rcpp (>= 1.0.13), data.table
-LinkingTo: Rcpp
+Imports: data.table
+RoxygenNote: 7.3.2
