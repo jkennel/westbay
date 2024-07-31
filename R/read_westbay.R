@@ -6,6 +6,10 @@
 #'
 #' @importFrom data.table data.table
 #' @importFrom data.table fread
+#' @importFrom data.table setnames
+#' @importFrom data.table setkey
+#' @importFrom data.table melt
+#' @importFrom data.table setDT
 #' @return data.table
 #' @export
 #'
@@ -106,9 +110,9 @@ read_westbay.character <- function(x,
   dat <- data.table::fread(x, skip = wh + 1,
                na.strings = c("", "NA", "N A", "N / A", "N/A", "N/ A",
                               "Not Available", "NOt available",
-                              '"n/a"', 'n/a'))
-
-  setnames(dat, c("name", "datetime", "pressure", "temperature",
+                              '"n/a"', 'n/a'), )
+  data.table::setDT(dat)
+  data.table::setnames(dat, c("name", "datetime", "pressure", "temperature",
                   "probe_id", "probe_status", "probe_description",
                   "port", "port_description", "depth", "comments"))
 
@@ -122,7 +126,7 @@ read_westbay.character <- function(x,
   dat[probe_description == "", probe_description := probe_description]
   dat[, datetime := as.POSIXct(datetime, format = "%Y/%m/%d %H:%M:%S", tz = "EST")]
 
-  setkey(dat, datetime)
+  data.table::setkey(dat, datetime)
 
   dat
 
@@ -131,10 +135,10 @@ read_westbay.character <- function(x,
 #===============================================================================
 .parse_westbay_data <- function(x) {
 
-  x <- x[, melt(.SD, id.vars = c("datetime", "probe_status", "port")),
+  x <- x[, data.table::melt(.SD, id.vars = c("datetime", "probe_status", "port")),
          by = probe_id,
          .SDcols = c("datetime", "pressure", "temperature", "probe_status", "port")]
-  setkey(x, probe_id, port)
+  data.table::setkey(x, probe_id, port)
 #
 #   x <- split(x, list(x$probe_id, x$port))
 #
