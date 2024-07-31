@@ -2,3 +2,5 @@
 
 S3method(read_westbay,character)
 export(read_westbay)
+importFrom(data.table,data.table)
+importFrom(data.table,fread)

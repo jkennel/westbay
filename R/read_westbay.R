@@ -4,6 +4,8 @@
 #' @param x name of the file
 #' @param ... other arguments
 #'
+#' @importFrom data.table data.table
+#' @importFrom data.table fread
 #' @return data.table
 #' @export
 #'
@@ -77,7 +79,7 @@ read_westbay.character <- function(x,
 .split_parameters_westbay <- function(x) {
 
   x <- split(x[[1]], x[[1]]$variable)
-  data.table(data = x, channel = names(x))
+  data.table::data.table(data = x, channel = names(x))
 
 }
 
@@ -101,7 +103,7 @@ read_westbay.character <- function(x,
   ind  <- readLines(x, warn = FALSE)
   wh   <- grep("[Data]", ind, fixed = TRUE)
 
-  dat <- fread(x, skip = wh + 1,
+  dat <- data.table::fread(x, skip = wh + 1,
                na.strings = c("", "NA", "N A", "N / A", "N/A", "N/ A",
                               "Not Available", "NOt available",
                               '"n/a"', 'n/a'))
@@ -186,7 +188,7 @@ read_westbay.character <- function(x,
   elevation     <- .get_westbay_elevation(h)
 
 
-  h <- data.table(download_time,
+  h <- data.table::data.table(download_time,
                   probe_info = list(probe_info),
                   port_info  = list(port_info),
                   elev       = elevation$elev,
