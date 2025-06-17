@@ -137,7 +137,7 @@ read_westbay.character <- function(x,
 
   x <- x[, data.table::melt(.SD, id.vars = c("datetime", "probe_status", "port")),
          by = probe_id,
-         .SDcols = c("datetime", "pressure", "temperature", "probe_status", "port")]
+         .SDcols = c("datetime", "pressure", "temperature", "probe_status", "port", "comments")]
   data.table::setkey(x, probe_id, port)
 #
 #   x <- split(x, list(x$probe_id, x$port))
