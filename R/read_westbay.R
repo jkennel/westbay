@@ -135,7 +135,7 @@ read_westbay.character <- function(x,
 #===============================================================================
 .parse_westbay_data <- function(x) {
 
-  x <- x[, data.table::melt(.SD, id.vars = c("datetime", "probe_status", "port")),
+  x <- x[, data.table::melt(.SD, id.vars = c("datetime", "probe_status", "port", "comments")),
          by = probe_id,
          .SDcols = c("datetime", "pressure", "temperature", "probe_status", "port", "comments")]
   data.table::setkey(x, probe_id, port)
